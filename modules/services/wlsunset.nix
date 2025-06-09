@@ -96,6 +96,15 @@ in
       '';
     };
 
+    duration = mkOption {
+      type = with types; nullOr int;
+      default = null;
+      description = ''
+        Animation time in seconds.
+        Only applicable when using manual sunset/sunrise times.
+      '';
+    };
+
     systemdTarget = mkOption {
       type = with types; str;
       default = config.wayland.systemd.target;
@@ -141,6 +150,7 @@ in
               L = cfg.longitude;
               S = cfg.sunrise;
               s = cfg.sunset;
+              d = cfg.duration;
               o = cfg.output;
             };
           in
